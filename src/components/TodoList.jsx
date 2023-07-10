@@ -15,6 +15,7 @@ export default class TodoList extends Component {
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
     }
 
     handleSubmit(message){
@@ -30,12 +31,23 @@ export default class TodoList extends Component {
         })
     }
 
+    handleDelete(index) {
+        this.setState((state) => {
+          const updatedTodo = [...state.todo];
+          updatedTodo.splice(index, 1);
+          return {
+            ...state,
+            todo: updatedTodo
+          };
+        });
+      }
+
   render() {
     return (
     <div className='todolist'>
 
         <Form  handleSubmit={this.handleSubmit} />
-        <Todo todos={this.state.todo} />
+        <Todo todos={this.state.todo}  handleDelete={this.handleDelete}/>
 
     </div>
     )

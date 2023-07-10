@@ -6,7 +6,9 @@ export default function Todo(props) {
     <div className="Todo-container">
       <ul className="todo-list">
         {props.todos.map((todo, index) => (
-          <li key={index}>{todo.message}</li>
+          <li key={index}>{todo.message}
+          <button onClick={() => props.handleDelete(index)}>Delete</button>
+          </li>
         ))}
       </ul>
     </div>
